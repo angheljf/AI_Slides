@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics &amp; Practical AI Skills - Teaching Presentation</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-normal: 1.5;
+  --line-height-tight: 1.2;
+
+  /* Spacing */
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-base: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .slide-container {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: var(--space-32);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: 50px 70px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-card-border);
+            margin: auto 0;
+        }
+
+        .slide.active {
+            display: block;
+            animation: slideIn 0.3s var(--ease-standard);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Title Slide */
+        .slide.title-slide {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+            color: white;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 500px;
+        }
+
+        .slide.title-slide.active {
+            display: flex;
+        }
+
+        .slide.title-slide h1 {
+            font-size: 56px;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-24);
+            line-height: var(--line-height-tight);
+        }
+
+        .slide.title-slide .subtitle {
+            font-size: 28px;
+            font-weight: var(--font-weight-normal);
+            opacity: 0.9;
+        }
+
+        /* Regular Slides */
+        .slide h2 {
+            font-size: 42px;
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            margin-bottom: var(--space-32);
+            line-height: var(--line-height-tight);
+        }
+
+        .slide h3 {
+            font-size: 28px;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-20);
+            color: var(--color-text);
+        }
+
+        .content-list {
+            list-style: none;
+            font-size: 24px;
+            line-height: 1.8;
+        }
+
+        .content-list li {
+            margin-bottom: var(--space-20);
+            padding-left: var(--space-32);
+            position: relative;
+        }
+
+        .content-list li::before {
+            content: "●";
+            color: var(--color-primary);
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: 6px;
+        }
+
+        .content-list li.no-bullet {
+            padding-left: 0;
+        }
+
+        .content-list li.no-bullet::before {
+            content: none;
+        }
+
+        .content-list li.sub-bullet {
+            font-size: 22px;
+            margin-left: var(--space-24);
+        }
+
+        .highlight {
+            background: var(--color-bg-2);
+            padding: var(--space-20);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--color-warning);
+            font-weight: var(--font-weight-semibold);
+            font-size: 24px;
+            margin: var(--space-24) 0;
+        }
+
+        .key-question {
+            background: var(--color-bg-1);
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--color-primary);
+            font-weight: var(--font-weight-bold);
+            font-size: 26px;
+            margin-top: var(--space-32);
+            text-align: center;
+        }
+
+        .warning-box {
+            background: rgba(var(--color-error-rgb), 0.1);
+            padding: var(--space-20);
+            border-radius: var(--radius-base);
+            border: 2px solid var(--color-error);
+            font-weight: var(--font-weight-bold);
+            font-size: 26px;
+            margin: var(--space-24) 0;
+            text-align: center;
+            color: var(--color-error);
+        }
+
+        .critical-rule {
+            background: rgba(var(--color-error-rgb), 0.1);
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            border: 3px solid var(--color-error);
+            font-weight: var(--font-weight-bold);
+            font-size: 26px;
+            margin: var(--space-24) 0;
+            text-align: center;
+            color: var(--color-error);
+        }
+
+        .scenario-box {
+            background: var(--color-bg-3);
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--color-success);
+            font-size: 22px;
+            margin: var(--space-24) 0;
+            line-height: 1.6;
+        }
+
+        .process-steps {
+            background: var(--color-bg-1);
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            margin-top: var(--space-24);
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            color: white;
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-bold);
+            font-size: 28px;
+            margin-top: var(--space-32);
+            text-align: center;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-20) var(--space-32);
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: var(--space-12);
+        }
+
+        .btn {
+            padding: var(--space-12) var(--space-24);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border: none;
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-standard);
+        }
+
+        .btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn:active {
+            background: var(--color-primary-active);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .timer {
+            font-size: var(--font-size-lg);
+            color: var(--color-text);
+            font-weight: var(--font-weight-semibold);
+            display: flex;
+            gap: var(--space-16);
+            align-items: center;
+        }
+
+        .timer-display {
+            background: var(--color-bg-1);
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            font-family: var(--font-family-base);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: var(--color-secondary);
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--color-primary);
+            transition: width var(--duration-normal) var(--ease-standard);
+        }
+
+        /* Speaker Notes */
+        .speaker-notes {
+            background: var(--color-bg-2);
+            padding: var(--space-20) var(--space-32);
+            border-top: 1px solid var(--color-border);
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .speaker-notes.hidden {
+            display: none;
+        }
+
+        .speaker-notes strong {
+            color: var(--color-text);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .toggle-notes-btn {
+            margin-left: var(--space-12);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 50px;
+            }
+
+            .slide h2 {
+                font-size: 36px;
+            }
+
+            .content-list {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 40px;
+            }
+
+            .slide.title-slide h1 {
+                font-size: 40px;
+            }
+
+            .slide.title-slide .subtitle {
+                font-size: 22px;
+            }
+
+            .slide h2 {
+                font-size: 30px;
+            }
+
+            .content-list {
+                font-size: 18px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: var(--space-16);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="slide-container" id="slideContainer">
+            <!-- Slide 1: Title -->
+            <div class="slide title-slide active" data-slide="1">
+                <h1>AI Ethics and Risks</h1>
+                <p class="subtitle">Understanding the Real-World Impact of Artificial Intelligence</p>
+            </div>
+
+            <!-- Slide 2: Learning Objectives -->
+            <div class="slide" data-slide="2">
+                <h2>What We'll Learn Today</h2>
+                <ul class="content-list">
+                    <li>Define artificial intelligence and identify where you encounter it</li>
+                    <li>Explore ethical challenges in AI: bias, hallucinations, disinformation, security, and legal issues</li>
+                    <li>Analyze real-world scenarios involving AI ethical dilemmas</li>
+                    <li>Develop critical thinking about AI's impact on society</li>
+                    <li>Learn how to use AI ethically for practical career skills</li>
+                </ul>
+            </div>
+
+            <!-- Slide 3: What is AI -->
+            <div class="slide" data-slide="3">
+                <h2>Artificial Intelligence: The Basics</h2>
+                <ul class="content-list">
+                    <li><strong>AI = Machines that learn from data to make decisions or predictions</strong></li>
+                    <li>Uses algorithms and patterns to "think"</li>
+                    <li>Examples: Recommendations, facial recognition, chatbots, voice assistants</li>
+                </ul>
+            </div>
+
+            <!-- Slide 4: AI in Your Life -->
+            <div class="slide" data-slide="4">
+                <h2>You're Already Living in an AI World</h2>
+                <ul class="content-list">
+                    <li>📱 Social media feeds (Instagram, TikTok algorithm)</li>
+                    <li>💬 ChatGPT and AI assistants</li>
+                    <li>📸 Face filters (Snapchat, Instagram)</li>
+                    <li>🎵 Music/video recommendations (Spotify, Netflix, YouTube)</li>
+                    <li>⌨️ Predictive text and autocorrect</li>
+                    <li>🗺️ GPS and map directions</li>
+                </ul>
+            </div>
+
+            <!-- Slide 5: Why AI Needs Ethics -->
+            <div class="slide" data-slide="5">
+                <h2>The Power and the Problem</h2>
+                <ul class="content-list">
+                    <li>AI makes real decisions that affect people's lives</li>
+                    <li>Technology is <strong>NOT neutral</strong> - reflects choices of creators</li>
+                    <li>Billions of people affected daily</li>
+                </ul>
+                <div class="key-question">
+                    KEY QUESTION: Just because we CAN do something, SHOULD we?
+                </div>
+            </div>
+
+            <!-- Slide 6: Algorithmic Bias -->
+            <div class="slide" data-slide="6">
+                <h2>When AI Is Unfair</h2>
+                <h3>BIAS: Systematic errors that lead to discriminatory outcomes</h3>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>Real Examples:</strong></li>
+                    <li class="sub-bullet">Facial recognition: 34% higher error rates for dark-skinned faces</li>
+                    <li class="sub-bullet">Hiring algorithms: Favoring male candidates for tech jobs</li>
+                    <li class="sub-bullet">Image generators: Perpetuating stereotypes</li>
+                </ul>
+                <div class="highlight">
+                    <strong>Discussion:</strong> Where does bias come from?<br>
+                    <em>Answer: Biased training data + developer blind spots</em>
+                </div>
+            </div>
+
+            <!-- Slide 7: AI Hallucinations -->
+            <div class="slide" data-slide="7">
+                <h2>When AI Makes Things Up</h2>
+                <h3>HALLUCINATIONS: AI generating false information with complete confidence</h3>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>Real Examples:</strong></li>
+                    <li class="sub-bullet">ChatGPT citing fake research studies</li>
+                    <li class="sub-bullet">AI creating incorrect math solutions</li>
+                    <li class="sub-bullet">Made-up historical "facts" that sound real</li>
+                </ul>
+                <div class="warning-box">
+                    ⚠️ WARNING: Confidence ≠ Correctness
+                </div>
+                <div class="highlight">
+                    <strong>Discussion:</strong> How can you verify AI information?
+                </div>
+            </div>
+
+            <!-- Slide 8: Disinformation & Deepfakes -->
+            <div class="slide" data-slide="8">
+                <h2>The Fake Content Crisis</h2>
+                <h3>DISINFORMATION &amp; DEEPFAKES: AI-generated content designed to deceive</h3>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>Real Examples:</strong></li>
+                    <li class="sub-bullet">Deepfake videos of political figures</li>
+                    <li class="sub-bullet">AI robocalls impersonating candidates</li>
+                    <li class="sub-bullet">Fake viral images on social media</li>
+                </ul>
+                <div class="highlight">
+                    <strong>Impact:</strong> Threatens elections, spreads misinformation, harms individuals
+                </div>
+            </div>
+
+            <!-- Slide 9: Security & Privacy -->
+            <div class="slide" data-slide="9">
+                <h2>Your Data at Risk</h2>
+                <h3>SECURITY &amp; PRIVACY: Threats to personal information</h3>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>Real Risks:</strong></li>
+                    <li class="sub-bullet">Student data entered into AI used for training</li>
+                    <li class="sub-bullet">Data breaches exposing personal information</li>
+                    <li class="sub-bullet">AI surveillance in schools</li>
+                    <li class="sub-bullet">Companies selling conversation data</li>
+                </ul>
+                <div class="critical-rule">
+                    🚫 CRITICAL RULE: NEVER share personal identifiable information with AI<br>
+                    <small style="font-size: 20px; display: block; margin-top: 12px;">Never share: Names, addresses, SSN, medical info, grades, disciplinary records</small>
+                </div>
+            </div>
+
+            <!-- Slide 10: Legal Challenges -->
+            <div class="slide" data-slide="10">
+                <h2>Laws Struggling to Keep Up</h2>
+                <h3>LEGAL CHALLENGES: Unresolved questions about ownership and rights</h3>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>Key Issues:</strong></li>
+                    <li class="sub-bullet">Who owns AI-generated content? (Currently: no one)</li>
+                    <li class="sub-bullet">Can AI be copyrighted? (Current answer: No human = no copyright)</li>
+                    <li class="sub-bullet">Is using copyrighted work to train AI legal? (Courts deciding now)</li>
+                    <li class="sub-bullet">Who's liable when AI causes harm?</li>
+                </ul>
+                <div class="highlight">
+                    <strong>KEY POINT:</strong> Your generation will help shape these laws
+                </div>
+            </div>
+
+            <!-- Slide 11: Scenario Discussion -->
+            <div class="slide" data-slide="11">
+                <h2>You Decide: AI Ethics in Action</h2>
+                <div class="scenario-box">
+                    <strong>SCENARIO:</strong><br>
+                    A high school student uses ChatGPT to write their entire college essay, edits it slightly, and submits it without mentioning AI.<br><br>
+                    <strong style="font-size: 26px;">Ethical or unethical?</strong>
+                </div>
+                <div class="process-steps">
+                    <strong style="font-size: 24px; display: block; margin-bottom: 12px;">PROCESS:</strong>
+                    <ul class="content-list">
+                        <li>Think individually (30 seconds)</li>
+                        <li>Discuss with a partner (2 minutes)</li>
+                        <li>Share with class (1.5 minutes)</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <!-- Slide 12: Key Takeaways from Ethics Section -->
+            <div class="slide" data-slide="12">
+                <h2>Remember These Essential Points</h2>
+                <ul class="content-list">
+                    <li><strong>1.</strong> AI is powerful but NOT perfect or neutral</li>
+                    <li><strong>2.</strong> Always verify AI outputs - don't trust blindly</li>
+                    <li><strong>3.</strong> Ask: Who benefits? Who is harmed? Who decides?</li>
+                    <li><strong>4.</strong> YOU will shape how AI is used ethically in the future</li>
+                </ul>
+                <div class="call-to-action">
+                    Call to Action: Be a critical, informed AI user
+                </div>
+            </div>
+
+            <!-- Slide 13: TRANSITION SLIDE -->
+            <div class="slide" data-slide="13">
+                <h2 style="color: var(--color-primary); margin-bottom: 40px;">From Understanding AI to Using AI</h2>
+                <ul class="content-list" style="font-size: 26px;">
+                    <li>✓ We've learned about AI risks and ethics</li>
+                    <li style="margin-top: 20px;">✓ Now let's apply AI responsibly to real career challenges</li>
+                    <li style="margin-top: 20px;">✓ How to use AI to strengthen your job applications</li>
+                    <li style="margin-top: 20px;">✓ Using AI tools while maintaining integrity and honesty</li>
+                </ul>
+            </div>
+
+            <!-- Slide 14: What is an ATS? -->
+            <div class="slide" data-slide="14">
+                <h2>Meet the AI Filtering Your Resume</h2>
+                <h3 style="font-size: 32px; margin-bottom: 24px;">ATS = Applicant Tracking System</h3>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>The Reality:</strong></li>
+                    <li class="sub-bullet">Software that screens resumes BEFORE humans see them</li>
+                    <li class="sub-bullet">Used by 98% of large organizations</li>
+                    <li class="sub-bullet">75% of resumes filtered out before human review</li>
+                    <li class="no-bullet" style="margin-top: 24px;"><strong>Why It Matters:</strong></li>
+                    <li class="sub-bullet">Your dream job could reject your application automatically</li>
+                    <li class="sub-bullet">ATS looks for specific keywords, formatting, structure</li>
+                    <li class="sub-bullet">A perfectly qualified candidate can be rejected due to ATS incompatibility</li>
+                </ul>
+                <div class="highlight" style="margin-top: 24px;">
+                    <strong>Example:</strong> If job posting requires "Project Management" and your resume says "Managed team projects," you might not match
+                </div>
+            </div>
+
+            <!-- Slide 15: The Role of AI in Resume Building -->
+            <div class="slide" data-slide="15">
+                <h2>How AI Can Help (And Where to Be Careful)</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px;">
+                    <div>
+                        <h3 style="font-size: 24px; color: var(--color-success); margin-bottom: 16px;">AI Can Help You:</h3>
+                        <ul class="content-list" style="font-size: 20px;">
+                            <li>✓ Identify keywords from job descriptions</li>
+                            <li>✓ Improve bullet point clarity and impact</li>
+                            <li>✓ Optimize resume formatting for readability</li>
+                            <li>✓ Tailor your resume for each job</li>
+                            <li>✓ Check ATS compatibility</li>
+                            <li>✓ Generate professional language</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 24px; color: var(--color-error); margin-bottom: 16px;">Where AI Can Mislead You:</h3>
+                        <ul class="content-list" style="font-size: 20px;">
+                            <li>✗ Generating fake achievements (remember hallucinations!)</li>
+                            <li>✗ Claiming skills you don't have</li>
+                            <li>✗ Copying content verbatim without personalization</li>
+                            <li>✗ Creating false work experience</li>
+                            <li>✗ Trusting AI recommendations without verification</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="key-question" style="margin-top: 32px;">
+                    Ethical Rule: Use AI as an assistant, not a ghost writer.<br>
+                    <span style="font-size: 22px; font-weight: normal;">The content should be truthful and authentically yours.</span>
+                </div>
+            </div>
+
+            <!-- Slide 16: Top AI Tools for Resume Optimization -->
+            <div class="slide" data-slide="16">
+                <h2>Popular AI Resume Tools You Can Explore</h2>
+                <ul class="content-list" style="font-size: 22px;">
+                    <li class="no-bullet"><strong>🎯 Jobscan (jobscan.co)</strong></li>
+                    <li class="sub-bullet">Best for targeted ATS optimization • Upload resume + job description</li>
+                    <li class="sub-bullet">Get match score (0-100%) • See exactly which keywords you're missing</li>
+                    <li class="sub-bullet">Free limited scans, paid plans available</li>
+                    <li class="no-bullet" style="margin-top: 16px;"><strong>⚡ Rezi (rezi.ai)</strong></li>
+                    <li class="sub-bullet">Real-time ATS optimization • AI keyword targeting as you type • Free version available</li>
+                    <li class="no-bullet" style="margin-top: 16px;"><strong>🔗 Teal (tealhq.com)</strong></li>
+                    <li class="sub-bullet">Job matching + resume building • AI-powered content suggestions • Free with premium option</li>
+                    <li class="no-bullet" style="margin-top: 16px;"><strong>🏗️ Wobo (wobo.ai)</strong></li>
+                    <li class="sub-bullet">Comprehensive AI resume builder • 25-factor resume analysis • Job-specific matching score</li>
+                    <li class="no-bullet" style="margin-top: 16px;"><strong>🎨 Canva AI Resume Builder</strong></li>
+                    <li class="sub-bullet">Visually designed resumes • AI writing suggestions • Easy customization</li>
+                    <li class="no-bullet" style="margin-top: 16px;"><strong>💬 ChatGPT (for brainstorming, not writing)</strong></li>
+                    <li class="sub-bullet">Help improve bullet point clarity • DON'T let it write content for you</li>
+                </ul>
+            </div>
+
+            <!-- Slide 17: How to Use Jobscan (Step-by-Step Demo) -->
+            <div class="slide" data-slide="17">
+                <h2>Jobscan Demo: Matching Your Resume to a Job</h2>
+                <ul class="content-list" style="font-size: 22px;">
+                    <li><strong>STEP 1:</strong> Find a job posting you want to apply for</li>
+                    <li><strong>STEP 2:</strong> Go to jobscan.co</li>
+                    <li><strong>STEP 3:</strong> Upload your resume (PDF or paste text)</li>
+                    <li><strong>STEP 4:</strong> Paste the job description</li>
+                    <li><strong>STEP 5:</strong> Click "Scan Now"</li>
+                    <li><strong>STEP 6:</strong> Review your Match Score</li>
+                    <li><strong>STEP 7:</strong> Read the feedback in 5 areas: Searchability (keywords), Skills, Recruiter Tips (formatting), Formatting (ATS compatibility), Cover Letter analysis</li>
+                    <li><strong>STEP 8:</strong> Implement suggestions: Add missing keywords naturally, reorganize content if needed, fix formatting issues</li>
+                    <li><strong>STEP 9:</strong> Re-upload to verify improvements</li>
+                </ul>
+                <div class="highlight" style="margin-top: 24px; font-size: 20px;">
+                    <strong>Real Example:</strong> Job mentions "Project management," "stakeholder communication," "agile methodology." Your resume said: "Managed projects," "talked with clients," "flexible approach." Jobscan flags these mismatches. You revise to include actual job terminology. <strong>Match score goes from 45% to 78%</strong>
+                </div>
+            </div>
+
+            <!-- Slide 18: Best Practices for Ethical AI Resume Building -->
+            <div class="slide" data-slide="18">
+                <h2>Use AI Responsibly in Your Job Search</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px;">
+                    <div>
+                        <h3 style="font-size: 24px; color: var(--color-success); margin-bottom: 16px;">DO:</h3>
+                        <ul class="content-list" style="font-size: 20px;">
+                            <li>✓ Use AI to identify keywords from job descriptions</li>
+                            <li>✓ Ask AI to improve clarity of YOUR achievements</li>
+                            <li>✓ Use AI to check formatting compatibility</li>
+                            <li>✓ Tailor each resume to specific jobs</li>
+                            <li>✓ Be honest about your accomplishments</li>
+                            <li>✓ Use real numbers/metrics when possible</li>
+                            <li>✓ Verify all information is accurate</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 24px; color: var(--color-error); margin-bottom: 16px;">DON'T:</h3>
+                        <ul class="content-list" style="font-size: 20px;">
+                            <li>✗ Let AI generate fake work experience</li>
+                            <li>✗ Claim skills you don't actually have</li>
+                            <li>✗ Copy AI-generated content verbatim</li>
+                            <li>✗ Lie about job titles, dates, or responsibilities</li>
+                            <li>✗ Use AI to hide employment gaps deceptively</li>
+                            <li>✗ Trust AI without checking facts</li>
+                            <li>✗ Submit same resume to every job</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="critical-rule" style="margin-top: 28px; font-size: 22px;">
+                    Important Reality Check: Employers check references and verify work history<br>
+                    Dishonesty discovered in hiring process = disqualification<br>
+                    Your reputation is worth more than one job
+                </div>
+            </div>
+
+            <!-- Slide 19: Your Competitive Advantage -->
+            <div class="slide" data-slide="19">
+                <h2>Why AI Resume Skills Matter Now</h2>
+                <ul class="content-list">
+                    <li class="no-bullet"><strong>The Reality:</strong></li>
+                    <li class="sub-bullet">75% of resumes filtered out before human review</li>
+                    <li class="sub-bullet">98% of large companies use ATS</li>
+                    <li class="sub-bullet">AI resume builders are becoming standard</li>
+                    <li class="no-bullet" style="margin-top: 24px;"><strong>Your Edge:</strong></li>
+                    <li class="sub-bullet">Understanding how ATS works = strategic advantage</li>
+                    <li class="sub-bullet">Most students DON'T know about these tools yet</li>
+                    <li class="sub-bullet">Tailoring each resume to specific jobs = higher success rate</li>
+                    <li class="sub-bullet">Using AI responsibly = demonstrates maturity and wisdom</li>
+                </ul>
+                <div class="highlight" style="margin-top: 32px; font-size: 22px;">
+                    <strong>Three Types of Job Seekers:</strong><br>
+                    1. Those who don't use AI → Resume rejected by ATS automatically<br>
+                    2. Those who use AI blindly → Resume optimized but dishonest<br>
+                    3. Those who use AI ethically &amp; strategically → <strong style="color: var(--color-success);">BEST CHANCE</strong><br>
+                    <strong style="display: block; margin-top: 16px; font-size: 26px;">(That's you after this lesson!)</strong>
+                </div>
+            </div>
+
+            <!-- Slide 20: Resources for Exploring AI Tools -->
+            <div class="slide" data-slide="20">
+                <h2>Tools to Try on Your Own</h2>
+                <ul class="content-list" style="font-size: 22px;">
+                    <li class="no-bullet"><strong>Immediate Exploration (Free):</strong></li>
+                    <li class="sub-bullet">Jobscan.co • Rezi.ai • Teal.com • ChatGPT • Canva.com • LinkedIn</li>
+                    <li class="no-bullet" style="margin-top: 20px;"><strong>Learning Resources:</strong></li>
+                    <li class="sub-bullet">YouTube tutorials on each platform</li>
+                    <li class="sub-bullet">Jobscan blog - "How to Optimize Your Resume"</li>
+                    <li class="sub-bullet">Teal's Career Guides</li>
+                    <li class="sub-bullet">Your school's career counselor</li>
+                    <li class="no-bullet" style="margin-top: 20px;"><strong>Career Planning Resources:</strong></li>
+                    <li class="sub-bullet">Indeed.com - Job postings</li>
+                    <li class="sub-bullet">LinkedIn Learning - Free resume courses</li>
+                    <li class="sub-bullet">College/University career offices</li>
+                </ul>
+                <div class="key-question" style="margin-top: 32px; font-size: 22px;">
+                    <strong>Assignment Idea for You:</strong><br>
+                    1. Find a job posting that interests you<br>
+                    2. Try Jobscan with your current resume/CV<br>
+                    3. Note 5 keywords you were missing<br>
+                    4. Revise and re-test<br>
+                    5. Save your improved version
+                </div>
+            </div>
+
+            <!-- Slide 21: Final Thoughts - Ethics + Practicality -->
+            <div class="slide" data-slide="21">
+                <h2>Being an Ethical, AI-Savvy Job Seeker</h2>
+                <ul class="content-list" style="font-size: 21px;">
+                    <li class="no-bullet"><strong style="font-size: 24px;">PART 1 - AI ETHICS:</strong></li>
+                    <li class="sub-bullet">AI is powerful but not neutral</li>
+                    <li class="sub-bullet">Bias, hallucinations, and disinformation are real risks</li>
+                    <li class="sub-bullet">Privacy and legal issues are evolving</li>
+                    <li class="sub-bullet">Your generation will shape AI policy</li>
+                    <li class="no-bullet" style="margin-top: 20px;"><strong style="font-size: 24px;">PART 2 - PRACTICAL AI SKILLS:</strong></li>
+                    <li class="sub-bullet">AI tools can help you compete in the job market</li>
+                    <li class="sub-bullet">ATS systems are gatekeepers—understand how they work</li>
+                    <li class="sub-bullet">Using AI ethically = presenting your best authentic self</li>
+                    <li class="sub-bullet">Strategic resume tailoring increases your chances</li>
+                    <li class="no-bullet" style="margin-top: 20px;"><strong style="font-size: 24px;">THE BALANCE:</strong></li>
+                    <li class="sub-bullet">✓ Learn how AI works and when to use it</li>
+                    <li class="sub-bullet">✓ Understand AI's limitations and risks</li>
+                    <li class="sub-bullet">✓ Maintain integrity even when shortcuts exist</li>
+                    <li class="sub-bullet">✓ Use technology to serve your goals, not replace your truth</li>
+                </ul>
+                <div class="call-to-action" style="margin-top: 28px; font-size: 24px;">
+                    YOUR SUPERPOWER: You're entering the job market in the AI era with both critical thinking about AI ethics AND practical skills to use AI effectively. That's rare. Use it well.
+                </div>
+            </div>
+        </div>
+
+        <div class="speaker-notes" id="speakerNotes">
+            <strong>Speaker Notes:</strong> <span id="notesContent">Welcome to AI Ethics and Risks. This is a 20-minute presentation for grades 11-12.</span>
+        </div>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button class="btn" id="prevBtn" onclick="previousSlide()">← Previous</button>
+                <button class="btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+                <button class="btn toggle-notes-btn" id="toggleNotesBtn" onclick="toggleNotes()">Hide Notes</button>
+            </div>
+            <div class="slide-counter" id="slideCounter">Slide 1 of 22</div>
+            <div class="timer">
+                <div class="timer-display" id="timerDisplay">00:00</div>
+                <button class="btn" id="timerBtn" onclick="toggleTimer()">Start Timer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 21;
+        let timerRunning = false;
+        let timerSeconds = 0;
+        let timerInterval = null;
+
+        const speakerNotes = {
+            1: "Welcome to AI Ethics & Practical AI Skills. This is a 30-minute presentation for grades 11-12. Start the timer when you begin.",
+            2: "Take 30 seconds to review objectives with students. We'll cover AI ethics in the first 20 minutes, then explore practical resume skills in the last 10.",
+            3: "Ask students to call out examples they've encountered today. Keep this conversational. Most students have used AI multiple times already. (Timing: 2 minutes)",
+            4: "Give students 30 seconds to recognize AI in their daily life. This validates their experiences and makes AI feel real and relevant. (Timing: 30 seconds)",
+            5: "Frame ethics discussion. Ask students the key question. Don't answer it - let them think. This is the foundation for the rest of the lesson. (Timing: 2 minutes)",
+            6: "Use powerful visual examples if possible. Connect to students' experiences with stereotypes. Emphasize that bias isn't accidental - it comes from human choices. (Timing: 2 minutes)",
+            7: "This is critical. Students trust confident-sounding information. Emphasize that they must always verify. If time allows, show a real ChatGPT hallucination example. (Timing: 2 minutes)",
+            8: "Discuss detection strategies: check sources, use reverse image search, be skeptical of emotionally charged content. This is increasingly relevant to students. (Timing: 2 minutes)",
+            9: "Make this practical and actionable. Students should remember this rule. Ask: What information should stay private? Get them to think about their own data. (Timing: 2 minutes)",
+            10: "Frame as opportunity, not just problem. Laws are being written right now. Students will influence future policy. Make it empowering. (Timing: 2 minutes)",
+            11: "This is most relatable for 11th-12th graders. Read scenario clearly. Give full time for each phase. Listen carefully during partner discussions - note points to share whole class. (Timing: 4 minutes)",
+            12: "Be inspirational here. Emphasize student agency. This lesson gives them the knowledge to make ethical choices about AI. They have power. (Timing: 1 minute)",
+            13: "You're about to enter the job market or college applications. AI can be a valuable tool in your job search—if used ethically. (Timing: 30 seconds)",
+            14: "This is important because it's where AI directly impacts YOUR future. Understanding ATS helps you compete fairly. About 75% of resumes never reach human eyes—they're automatically screened out. (Timing: 1.5 minutes)",
+            15: "AI resume tools are becoming standard. But like any tool, you need to use them responsibly. AI can help you present your real qualifications better—not create fake ones. (Timing: 2 minutes)",
+            16: "These tools have different strengths. Jobscan is best for seeing what keywords you're missing. Rezi is best for real-time feedback. Canva is best for design. Most offer free versions—try a few to see what works for you. (Timing: 2 minutes)",
+            17: "Jobscan is free to try with limited scans. Walk through the process with them. The key is that it tells you SPECIFICALLY what keywords you're missing—not just 'add more keywords' (vague). (Timing: 2 minutes)",
+            18: "This connects back to ethics. Using AI to cheat hurts you long-term. But using AI to improve how you present REAL accomplishments? That's smart career strategy. You're competing with other AI-savvy job seekers anyway. (Timing: 1.5 minutes)",
+            19: "This is empowering. You're learning something many job seekers don't know. When you're 18-22 applying for jobs or internships, you'll have an advantage. And you're doing it the RIGHT way—ethically. (Timing: 1 minute)",
+            20: "Don't be overwhelmed. Start with one tool—probably Jobscan because it's the most straightforward. You don't need to use all these tools. Just pick one and experiment. Your school's career counselor can also help. (Timing: 1 minute)",
+            21: "This is the big picture. You now understand AI's risks AND how to use AI strategically. That combination—critical thinking + practical skill—is exactly what employers want. You've got both. (Timing: 1.5 minutes)"
+        };
+
+        function showSlide(slideNumber) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            const targetSlide = document.querySelector(`[data-slide="${slideNumber}"]`);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
+            }
+
+            currentSlide = slideNumber;
+            updateControls();
+            updateProgress();
+            updateSpeakerNotes();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function updateControls() {
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+            document.getElementById('slideCounter').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+        }
+
+        function updateProgress() {
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function updateSpeakerNotes() {
+            const notes = speakerNotes[currentSlide] || "No notes for this slide.";
+            document.getElementById('notesContent').textContent = notes;
+        }
+
+        function toggleTimer() {
+            const btn = document.getElementById('timerBtn');
+            if (timerRunning) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                btn.textContent = 'Resume Timer';
+            } else {
+                timerRunning = true;
+                btn.textContent = 'Pause Timer';
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function updateTimer() {
+            timerSeconds++;
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            document.getElementById('timerDisplay').textContent = display;
+        }
+
+        function toggleNotes() {
+            const notes = document.getElementById('speakerNotes');
+            const btn = document.getElementById('toggleNotesBtn');
+            notes.classList.toggle('hidden');
+            btn.textContent = notes.classList.contains('hidden') ? 'Show Notes' : 'Hide Notes';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                previousSlide();
+            }
+        });
+
+        // Progress bar click navigation
+        document.getElementById('progressContainer').addEventListener('click', function(event) {
+            const rect = this.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const width = rect.width;
+            const clickPercentage = clickX / width;
+            const targetSlide = Math.max(1, Math.min(totalSlides, Math.ceil(clickPercentage * totalSlides)));
+            showSlide(targetSlide);
+        });
+
+        // Initialize
+        updateControls();
+        updateProgress();
+        updateSpeakerNotes();
+    </script>
+</body>
+</html>
